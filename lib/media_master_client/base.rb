@@ -17,7 +17,7 @@ module MediaMasterClient::Base
   end
   
   def post_and_parse(url, options={})
-    json = JSON.parse(self.connection.post(get, options).body)
+    json = JSON.parse(self.connection.post(url, options).body)
     return convert_response_to_hashie(json)
   end
   
