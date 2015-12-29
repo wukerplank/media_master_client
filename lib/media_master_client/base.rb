@@ -10,22 +10,41 @@ class MediaMasterClient::Base
     @@app_uid = app_uid
   end
 
+  def self.app_uid
+    @@app_uid
+  end
+
   def self.app_secret=(app_secret)
     @@app_secret = app_secret
+  end
+
+  def self.app_secret
+    @@app_secret
   end
 
   def self.host=(host)
     @@host = host
   end
 
+  def self.host
+    @@host
+  end
+
   def self.username=(username)
     @@username = username
+  end
+
+  def self.username
+    @@username
   end
 
   def self.password=(password)
     @@password = password
   end
 
+  def self.password
+    @@password
+  end
 
 
 
