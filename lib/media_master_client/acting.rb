@@ -3,7 +3,7 @@
 class MediaMasterClient::Acting < MediaMasterClient::Base
 
   def self.create(data)
-    Hashie::Mash.new JSON.parse(self.connection.post(@@host + '/api/v1/actings', params: {acting: data}).body)
+    Hashie::Mash.new JSON.parse(self.connection.post(@@host + '/api/v1/actings', body: {acting: data}).body)
   end
 
 end

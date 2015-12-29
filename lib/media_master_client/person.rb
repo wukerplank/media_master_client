@@ -3,7 +3,7 @@
 class MediaMasterClient::Person < MediaMasterClient::Base
 
   def self.create(data)
-    Hashie::Mash.new JSON.parse(self.connection.post(@@host + '/api/v1/people', params: {person: data}).body)
+    Hashie::Mash.new JSON.parse(self.connection.post(@@host + '/api/v1/people', body: {person: data}).body)
   end
 
   def self.find_or_create_by_imdb_id(imdb_id, data)

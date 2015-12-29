@@ -7,7 +7,7 @@ class MediaMasterClient::OwnedFile < MediaMasterClient::Base
   end
 
   def self.batch_update(data)
-    Hashie::Mash.new JSON.parse(self.connection.patch(@@host + '/api/v1/owned_files/batch_update', params: {owned_files: JSON.dump(data)}).body)
+    Hashie::Mash.new JSON.parse(self.connection.patch(@@host + '/api/v1/owned_files/batch_update', body: {owned_files: JSON.dump(data)}).body)
   end
 
 end

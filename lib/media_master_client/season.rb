@@ -3,7 +3,7 @@
 class MediaMasterClient::Season < MediaMasterClient::Base
 
   def self.create(tvshow_id, data)
-    self.post_and_parse(@@host + '/api/v1/tvshows/' + tvshow_id + '/seasons', params: {season: data})
+    self.post_and_parse(@@host + '/api/v1/tvshows/' + tvshow_id + '/seasons', body: {season: data})
   end
 
   def self.find_or_create_by_number(tvshow_id, number, data)

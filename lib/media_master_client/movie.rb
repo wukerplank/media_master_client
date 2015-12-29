@@ -3,7 +3,7 @@
 class MediaMasterClient::Movie < MediaMasterClient::Base
 
   def self.create(data)
-    self.post_and_parse(@@host + '/api/v1/movies', params: {movie: data})
+    self.post_and_parse(@@host + '/api/v1/movies', body: {movie: data})
   end
 
   def self.find_or_create_by_imdb_id(imdb_id, data)
