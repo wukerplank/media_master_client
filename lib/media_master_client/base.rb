@@ -55,7 +55,7 @@ class MediaMasterClient::Base
 
   def self.connection
     @@client ||= ::OAuth2::Client.new(@@app_uid, @@app_secret, site: @@host)
-    @@token ||= @@client.password.get_token(@@username, @@password)
+    @@token = @@client.password.get_token(@@username, @@password)
   end
 
   def self.get_and_parse(url, options={})
