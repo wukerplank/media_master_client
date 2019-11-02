@@ -7,7 +7,7 @@ class MediaMasterClient::Episode < MediaMasterClient::Base
   end
 
   def self.find_or_create_by_imdb_id(tvshow_id, season_id, imdb_id, data)
-    if tvshow = self.find_by_imdb_id(imdb_id)
+    if tvshow = self.find_by_imdb_id(tvshow_id, season_id, imdb_id)
       return tvshow
     else
       return self.create(data)
