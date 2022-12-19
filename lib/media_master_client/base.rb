@@ -54,17 +54,30 @@ class MediaMasterClient::Base
   end
 
   def self.connection
-    @@client ||= ::OAuth2::Client.new(@@app_uid, @@app_secret, site: @@host)
-    @@token = @@client.password.get_token(@@username, @@password)
+    @@client ||= Faraday.new do |conn|
+      conn.adapter :net_http
+      conn.request :url_encoded
+      # conn.response :logger
+      conn.basic_auth @@username, @@password
+    end
+    # @@client ||= ::OAuth2::Client.new(@@app_uid, @@app_secret, site: @@host)
+    # @@token = @@client.password.get_token(@@username, @@password)
   end
 
   def self.get_and_parse(url, options={})
-    json = JSON.parse(self.connection.get(url, options).body)
+    json = JSON.parse(self.connection.get(url, options[:params]).body)
+    if json.class == Hash && json.empty?
+      return nil
+    end
     return convert_response_to_hashie(json)
   end
 
   def self.post_and_parse(url, options={})
-    json = JSON.parse(self.connection.post(url, options).body)
+    response = self.connection.post(url) do |request|
+      request.headers['Content-Type'] = 'application/json'
+      request.body = JSON.dump(options[:body])
+    end
+    json = JSON.parse(response.body)
     return convert_response_to_hashie(json)
   end
 

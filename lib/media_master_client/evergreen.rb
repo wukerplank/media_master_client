@@ -3,7 +3,7 @@
 class MediaMasterClient::Evergreen < MediaMasterClient::Base
 
   def self.all
-    self.get_and_parse(@@host + '/api/v1/evergreens')
+    self.get_and_parse(@@host + '/api/v2/evergreens')
   end
 
   # def self.create(data)

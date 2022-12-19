@@ -3,7 +3,7 @@
 class MediaMasterClient::QueuedItem < MediaMasterClient::Base
 
   def self.all
-    self.get_and_parse(@@host + '/api/v1/queued_items')
+    self.get_and_parse(@@host + '/api/v2/queued_items')
   end
 
   # def self.create(data)

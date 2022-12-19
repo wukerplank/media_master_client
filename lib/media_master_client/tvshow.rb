@@ -15,12 +15,7 @@ class MediaMasterClient::Tvshow < MediaMasterClient::Base
   end
 
   def self.find_by_imdb_id(imdb_id)
-    response = ::JSON.parse(self.connection.get(@@host + '/api/v1/tvshows/search', params: {imdb_id: imdb_id}).body)
-    if response.length > 0
-      Hashie::Mash.new response
-    else
-      nil
-    end
+    self.get_and_parse @@host + '/api/v2/tvshows/search', params: {imdb_id: imdb_id}
   end
 
 end
