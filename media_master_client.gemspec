@@ -24,6 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'json'
   spec.add_runtime_dependency 'hashie'
 
-  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "bundler", "~> 2.6"
   spec.add_development_dependency "rake"
 end
