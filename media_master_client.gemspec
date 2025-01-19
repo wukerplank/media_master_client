@@ -18,12 +18,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
-  
+
+  spec.add_runtime_dependency 'faraday'
   spec.add_runtime_dependency 'mechanize'
-  spec.add_runtime_dependency 'oauth2'
   spec.add_runtime_dependency 'json'
   spec.add_runtime_dependency 'hashie'
-  
+
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
 end

@@ -1,4 +1,3 @@
-require 'oauth2'
 require 'hashie'
 require 'json'
 require 'mechanize'
